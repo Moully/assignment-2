@@ -20,9 +20,9 @@
 // Send the request
 
 class BLOG {
-  constructor(id, tittle, thumbnail, content) {
+  constructor(id, title, thumbnail, content) {
     this.id = id;
-    this.tittle = tittle;
+    this.title = title;
     this.thumbnail = thumbnail;
     this.content = content;
   }
@@ -46,11 +46,37 @@ function companyIntro(url) {
   });
 }
 
-function printName(e) {
+function publishName(e) {
   console.log(e);
+  let utga = e.data.map((e) => {
+    return new BLOG(e.id, e.title, e.thumbnail, e.content);
+  });
+  console.log(utga);
+  generateHTML(utga);
 }
 
-companyIntro(companyIntroduction).then(printName);
+function generateHTML(utga) {
+  let sda = "";
+  const testAjax = document.querySelector("#ajaxTest");
+  utga.map((e) => {
+    sda += `<div class="col-12 col-lg-4">
+      <a class="blog-cards blog-upper" href="#">
+                  <div class="video-img-container">
+                      <img class="blogimg w-100" src="${e.thumbnail}" alt="">
+                  </div>
+              <div class="blog-cards-content">
+                  <h3>${e.title}</h3>
+                  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi, quibusdam.</p>
+                  <p class="blog-cards-a">Learn More &#8594;</p>
+              </div>
+      </a>
+  </div>
+      `;
+  });
+  testAjax.innerHTML = sda;
+}
+
+companyIntro(companyIntroduction).then(publishName);
 
 /*  Add subscription email action. When subscription POST request is successful, 
     change the email element and subscribe button into "Your subscription is successful" Text. 
