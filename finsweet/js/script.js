@@ -19,6 +19,17 @@
 // Open a GET request and use data from ../data/company_intro.json
 // Send the request
 
+window.addEventListener("scroll", (e) => {
+  const asd = document.querySelector(".navbar-container");
+  const abs = parseInt(e.target.scrollingElement.scrollTop);
+  if (abs > 600) {
+    asd.setAttribute("class", "fixed-top");
+  }
+  if (abs < 600) {
+    asd.classList.removeAttribute("fixed-top");
+  }
+});
+
 class BLOG {
   constructor(id, title, thumbnail, content) {
     this.id = id;
@@ -51,7 +62,6 @@ function publishName(e) {
   let utga = e.data.map((e) => {
     return new BLOG(e.id, e.title, e.thumbnail, e.content);
   });
-  console.log(utga);
   generateHTML(utga);
 }
 
