@@ -20,13 +20,12 @@
 // Send the request
 
 window.addEventListener("scroll", (e) => {
-  const asd = document.querySelector(".navbar-container");
+  const asd = document.getElementById("navbarID");
   const abs = parseInt(e.target.scrollingElement.scrollTop);
   if (abs > 600) {
-    asd.setAttribute("class", "fixed-top");
-  }
-  if (abs < 600) {
-    asd.classList.removeAttribute("fixed-top");
+    asd.classList.add("fixed-top", "container");
+  } else {
+    asd.classList.remove("fixed-top", "container");
   }
 });
 
@@ -87,6 +86,9 @@ function generateHTML(utga) {
 }
 
 companyIntro(companyIntroduction).then(publishName);
+
+
+
 
 /*  Add subscription email action. When subscription POST request is successful, 
     change the email element and subscribe button into "Your subscription is successful" Text. 
