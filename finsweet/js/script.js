@@ -87,8 +87,47 @@ function generateHTML(utga) {
 
 companyIntro(companyIntroduction).then(publishName);
 
+document.querySelector(".testimony-video").innerHTML = `
+
+<div data-bs-toggle="modal" data-bs-target="#exampleModal">
+<div class="video-img-container">
+<img class="w-100" src="./images/video-image.jpeg" alt="">
+</div>
+<img class="testimony-video-play" src="./images/play-icon.svg" alt="">
+<p>Play video</p>
+</div>
 
 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      <iframe width="100%" height="400px" src="https://www.youtube.com/embed/u8SZZ3VpdYE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+document.getElementById("subscribeBTN").innerHTML = `
+<div class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <div data-bs-dismiss="modal" aria-label="Close"></div>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
 
 /*  Add subscription email action. When subscription POST request is successful, 
     change the email element and subscribe button into "Your subscription is successful" Text. 
